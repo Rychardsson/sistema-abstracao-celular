@@ -1,12 +1,12 @@
 namespace DesafioPOO.Models
 {
-    public class Nokia : Smartphone, ISmartphoneFeatures
+    public class NokiaSimple : Smartphone, ISmartphoneFeatures
     {
         private readonly List<string> _aplicativosInstalados;
 
         public IReadOnlyList<string> AplicativosInstalados => _aplicativosInstalados.AsReadOnly();
 
-        public Nokia(string numero, string modelo, string imei, int memoria)
+        public NokiaSimple(string numero, string modelo, string imei, int memoria)
             : base(numero, modelo, imei, memoria)
         {
             _aplicativosInstalados = new List<string> { "Snake", "Galeria", "Contatos" };
@@ -45,7 +45,7 @@ namespace DesafioPOO.Models
         {
             if (string.IsNullOrWhiteSpace(nome))
             {
-                Console.WriteLine("❌ Nome do aplicativo não pode ser vazio.");
+                Console.WriteLine("ERRO: Nome do aplicativo nao pode ser vazio.");
                 return;
             }
 
@@ -54,21 +54,21 @@ namespace DesafioPOO.Models
 
             if (app == null)
             {
-                Console.WriteLine($"❌ {nome} não está instalado no Nokia {Modelo}.");
+                Console.WriteLine($"ERRO: {nome} nao esta instalado no Nokia {Modelo}.");
                 return;
             }
 
             _aplicativosInstalados.Remove(app);
-            Console.WriteLine($"🗑️ Desinstalando {nome} do Nokia {Modelo}.");
-            Console.WriteLine($"✅ {nome} removido com sucesso!");
+            Console.WriteLine($"Desinstalando {nome} do Nokia {Modelo}.");
+            Console.WriteLine($"SUCESSO: {nome} removido com sucesso!");
         }
 
         public void ExibirAplicativos()
         {
-            Console.WriteLine($"📱 Aplicativos instalados no Nokia {Modelo}:");
+            Console.WriteLine($"Aplicativos instalados no Nokia {Modelo}:");
             foreach (var app in _aplicativosInstalados)
             {
-                Console.WriteLine($"   • {app}");
+                Console.WriteLine($"   - {app}");
             }
         }
 

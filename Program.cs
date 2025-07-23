@@ -1,18 +1,35 @@
 ﻿using DesafioPOO.Models;
 using DesafioPOO.Tests;
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("📱 SISTEMA DE GERENCIAMENTO DE SMARTPHONES 📱");
+        // Tentar configurar encoding UTF-8 para suporte a emojis
+        try
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
+        }
+        catch
+        {
+            // Se falhar, continuar com encoding padrão
+        }
+
+        ExecutarDemonstracao();
+    }
+
+    static void ExecutarDemonstracao()
+    {
+        Console.WriteLine("SISTEMA DE GERENCIAMENTO DE SMARTPHONES");
         Console.WriteLine("=".PadRight(50, '='));
         Console.WriteLine();
 
         try
         {
             // Testando Nokia
-            Console.WriteLine("🔶 TESTANDO NOKIA 🔶");
+            Console.WriteLine(">> TESTANDO NOKIA <<");
             var nokia = new Nokia("11987654321", "Nokia 3310", "111111111111111", 64);
             TestarSmartphone(nokia);
             
@@ -23,7 +40,7 @@ class Program
             Console.WriteLine("\n" + "=".PadRight(50, '=') + "\n");
 
             // Testando iPhone
-            Console.WriteLine("🔷 TESTANDO IPHONE 🔷");
+            Console.WriteLine(">> TESTANDO IPHONE <<");
             var iphone = new Iphone("11912345678", "iPhone 14 Pro", "222222222222222", 256);
             TestarSmartphone(iphone);
             
@@ -34,8 +51,8 @@ class Program
 
             Console.WriteLine("\n" + "=".PadRight(50, '=') + "\n");
 
-            // Testando Samsung (novo)
-            Console.WriteLine("🔸 TESTANDO SAMSUNG 🔸");
+            // Testando Samsung
+            Console.WriteLine(">> TESTANDO SAMSUNG <<");
             var samsung = new Samsung("11911111111", "Galaxy S23 Ultra", "333333333333333", 512);
             TestarSmartphone(samsung);
             
@@ -48,7 +65,7 @@ class Program
             Console.WriteLine("\n" + "=".PadRight(50, '=') + "\n");
 
             // Demonstração adicional de funcionalidades
-            Console.WriteLine("🔧 DEMONSTRAÇÃO DE FUNCIONALIDADES AVANÇADAS 🔧");
+            Console.WriteLine(">> DEMONSTRACAO DE FUNCIONALIDADES AVANCADAS <<");
             DemonstrarFuncionalidadesAvancadas(nokia, iphone);
 
             Console.WriteLine("\n" + "=".PadRight(50, '=') + "\n");
@@ -58,10 +75,10 @@ class Program
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"❌ Erro durante a execução: {ex.Message}");
+            Console.WriteLine($"ERRO durante a execucao: {ex.Message}");
         }
 
-        Console.WriteLine("\n✅ Demonstração concluída com sucesso!");
+        Console.WriteLine("\nDemonstracao concluida com sucesso!");
         Console.WriteLine("Pressione qualquer tecla para sair...");
         Console.ReadKey();
     }
